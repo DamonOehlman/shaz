@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/DamonOehlman/shaz",
   "dependencies": {
+    "cog": "^1.0.0",
     "crel": "^1.1.2"
   }
 }
