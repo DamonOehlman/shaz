@@ -22,5 +22,5 @@ exports.img = require('./img');
 
 // export the tag creators
 SUPPORTED_TAGS.forEach(function(tagName) {
-  shazam[tagName] = tag(tagName);
+  exports[tagName] = tag(tagName);
 });
