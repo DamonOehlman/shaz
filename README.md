@@ -3,8 +3,6 @@
 Simple slide creation logic for
 [shazam](https://github.com/DamonOehlman/shazam).
 
-__NOT CURRENTLY DESIGNED FOR HUMAN CONSUMPTION__
-
 
 [![NPM](https://nodei.co/npm/shaz.png)](https://nodei.co/npm/shaz/)
 
@@ -12,7 +10,7 @@ __NOT CURRENTLY DESIGNED FOR HUMAN CONSUMPTION__
 
 ## Example Usage
 
-To be completed.
+__NOT CURRENTLY DESIGNED FOR HUMAN CONSUMPTION__
 
 ## License(s)
 
