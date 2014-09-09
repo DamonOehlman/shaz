@@ -6,7 +6,7 @@ Simple slide creation logic for
 
 [![NPM](https://nodei.co/npm/shaz.png)](https://nodei.co/npm/shaz/)
 
-
+[![experimental](https://img.shields.io/badge/stability-experimental-red.svg)](https://github.com/dominictarr/stability#experimental) 
 
 ## Example Usage
 
