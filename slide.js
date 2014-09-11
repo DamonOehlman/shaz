@@ -88,3 +88,12 @@ proto.setBackgroundImage = function(value) {
 
   img.src = value;
 }
+
+require('./tags').forEach(function(tag) {
+  proto[tag] = function() {
+    console.log('hello');
+    this.el.appendChild(crel.apply(null, [tag].concat([].slice.call(arguments))));
+
+    return this;
+  };
+});

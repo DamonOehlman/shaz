@@ -10,19 +10,16 @@
 
 **/
 
-var tag = exports.tag = require('./tag');
-var SUPPORTED_TAGS = [
-  // headings
-  'h1', 'h2', 'h3', 'h4', 'h5', 'h6'
-];
+var slide = module.exports = require('./slide');
+var tag = slide.tag = require('./tag');
 
-exports.slide = require('./slide');
-exports.html = require('./html');
-exports.img = require('./img');
-exports.markdown = exports.md = require('./markdown');
-exports.site = require('./site');
+slide.slide = require('./slide');
+slide.html = require('./html');
+slide.img = require('./img');
+slide.markdown = exports.md = require('./markdown');
+slide.site = require('./site');
 
 // export the tag creators
-SUPPORTED_TAGS.forEach(function(tagName) {
-  exports[tagName] = tag(tagName);
+require('./tags').forEach(function(tagName) {
+  slide[tagName] = tag(tagName);
 });
