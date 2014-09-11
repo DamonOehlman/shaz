@@ -19,6 +19,8 @@ var SUPPORTED_TAGS = [
 exports.slide = require('./slide');
 exports.html = require('./html');
 exports.img = require('./img');
+exports.markdown = exports.md = require('./markdown');
+exports.site = require('./site');
 
 // export the tag creators
 SUPPORTED_TAGS.forEach(function(tagName) {
