@@ -1,6 +1,5 @@
 var marked = require('marked-ast');
 var Slide = require('./slide');
-var html = require('./html');
 var reSlideBreak = /\n\r?\-{2,}/m;
 var reLeadingAndTrailingSpaces = /^\s*(.*)\s*$/m;
 

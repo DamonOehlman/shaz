@@ -2,6 +2,10 @@ var crel = require('crel');
 var reImg = /\.(jpg|jpeg|png|bmp|gif|svg)$/i;
 var reURL = /^\w*\:?\/\//;
 
+var backgroundSizes = [
+  'cover', 'contain'
+];
+
 var imageAttributes = [
   'jpg', 'jpeg', 'png', 'bmp', 'gif', 'svg'
 ];
@@ -41,10 +45,10 @@ function Slide(el, opts) {
 
   if (opts && opts.background) {
     this.setBackground(opts.background, backgroundImage);
-
-    // set the background size
-    this.el.style.backgroundSize = (opts || {}).contain ? 'contain': 'cover';
   }
+
+  // set the background size
+  this.el.style.backgroundSize = (opts || {}).contain ? 'contain': 'cover';
 
   // apply any style overrides
   this.applyStyleOverrides(opts);
@@ -56,6 +60,18 @@ function Slide(el, opts) {
 module.exports = Slide;
 var proto = Slide.prototype;
 
+function appender(fn) {
+  return function() {
+    var child = fn.apply(this, arguments);
+
+    if (child) {
+      this.el.appendChild(child)
+    }
+
+    return this;
+  };
+}
+
 proto.applyStyleOverrides = function(opts) {
   var slide = this;
 
@@ -66,22 +82,24 @@ proto.applyStyleOverrides = function(opts) {
   });
 };
 
+proto.eg = proto.example = appender(require('./lib/example'));
+proto.html = appender(require('./lib/html'));
+
 proto.backgroundSize = function(size) {
   this.el.style.backgroundSize = size;
   return this;
 };
 
+backgroundSizes.forEach(function(size) {
+  proto[size] = function() {
+    return this.backgroundSize(size);
+  };
+});
+
 proto.bespoke = function(attr, value) {
   this.el.setAttribute('data-bespoke-' + attr, value);
 };
 
-proto.contain = function() {
-  return this.backgroundSize('contain');
-};
-
-proto.cover = function() {
-  return this.backgroundSize('cover');
-};
 
 proto.setBackground = function(value, bgImage) {
   if (bgImage || reImg.test(value)) {
@@ -118,18 +136,14 @@ imageAttributes.forEach(function(imageType) {
 
     img = new Image();
     img.onload = function() {
-      setBackgroundImage(url);
+      setBackgroundImage(input);
     };
 
-    img.src = url;
+    img.src = input;
     return this;
   };
 });
 
 require('./tags').forEach(function(tag) {
-  proto[tag] = function() {
-    this.el.appendChild(crel.apply(null, [tag].concat([].slice.call(arguments))));
-
-    return this;
-  };
+  proto[tag] = appender(require('./lib/tag')(tag));
 });

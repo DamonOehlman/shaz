@@ -14,7 +14,6 @@ var slide = module.exports = require('./slide');
 var tag = slide.tag = require('./tag');
 
 slide.slide = require('./slide');
-slide.html = require('./html');
 slide.img = require('./img');
 slide.markdown = exports.md = require('./markdown');
 slide.site = require('./site');
