@@ -66,8 +66,21 @@ proto.applyStyleOverrides = function(opts) {
   });
 };
 
+proto.backgroundSize = function(size) {
+  this.el.style.backgroundSize = size;
+  return this;
+};
+
 proto.bespoke = function(attr, value) {
   this.el.setAttribute('data-bespoke-' + attr, value);
+};
+
+proto.contain = function() {
+  return this.backgroundSize('contain');
+};
+
+proto.cover = function() {
+  return this.backgroundSize('cover');
 };
 
 proto.setBackground = function(value, bgImage) {
@@ -89,9 +102,32 @@ proto.setBackgroundImage = function(value) {
   img.src = value;
 }
 
+imageAttributes.forEach(function(imageType) {
+  proto[imageType] = function(input) {
+    var el = this.el;
+    var img;
+
+    function setBackgroundImage(url) {
+      el.style.backgroundImage = 'url("' + url + '")';
+    }
+
+    if (Buffer.isBuffer(input)) {
+      setBackgroundImage('data:image/' + imageType + ';base64,' + input.toString('base64'));
+      return this;
+    }
+
+    img = new Image();
+    img.onload = function() {
+      setBackgroundImage(url);
+    };
+
+    img.src = url;
+    return this;
+  };
+});
+
 require('./tags').forEach(function(tag) {
   proto[tag] = function() {
-    console.log('hello');
     this.el.appendChild(crel.apply(null, [tag].concat([].slice.call(arguments))));
 
     return this;
