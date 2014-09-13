@@ -84,11 +84,7 @@ proto.applyStyleOverrides = function(opts) {
 
 proto.eg = proto.example = appender(require('./lib/example'));
 proto.html = appender(require('./lib/html'));
-
-proto.backgroundSize = function(size) {
-  this.el.style.backgroundSize = size;
-  return this;
-};
+require('./lib/styler')(proto);
 
 backgroundSizes.forEach(function(size) {
   proto[size] = function() {
@@ -120,29 +116,7 @@ proto.setBackgroundImage = function(value) {
   img.src = value;
 }
 
-imageAttributes.forEach(function(imageType) {
-  proto[imageType] = function(input) {
-    var el = this.el;
-    var img;
-
-    function setBackgroundImage(url) {
-      el.style.backgroundImage = 'url("' + url + '")';
-    }
-
-    if (Buffer.isBuffer(input)) {
-      setBackgroundImage('data:image/' + imageType + ';base64,' + input.toString('base64'));
-      return this;
-    }
-
-    img = new Image();
-    img.onload = function() {
-      setBackgroundImage(input);
-    };
-
-    img.src = input;
-    return this;
-  };
-});
+imageAttributes.forEach(require('./lib/image-background')(proto));
 
 require('./tags').forEach(function(tag) {
   proto[tag] = appender(require('./lib/tag')(tag));
