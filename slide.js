@@ -1,4 +1,6 @@
 var crel = require('crel');
+var EventEmitter = require('eventemitter3');
+var inherits = require('inherits');
 var reImg = /\.(jpg|jpeg|png|bmp|gif|svg)$/i;
 var reURL = /^\w*\:?\/\//;
 
@@ -21,6 +23,8 @@ function Slide(el, opts) {
   if (! (this instanceof Slide)) {
     return new Slide(el, opts);
   }
+
+  EventEmitter.call(this);
 
   // assign or create the element
   el = this.el = crel.apply(null, ['section'].concat(el || []));
@@ -57,6 +61,7 @@ function Slide(el, opts) {
   this.loaded = true;
 }
 
+inherits(Slide, EventEmitter);
 module.exports = Slide;
 var proto = Slide.prototype;
 
