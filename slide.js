@@ -68,7 +68,6 @@ var proto = Slide.prototype;
 function appender(fn) {
   return function() {
     var child = fn.apply(this, arguments);
-
     if (child) {
       this.el.appendChild(child)
     }
