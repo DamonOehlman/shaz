@@ -6,17 +6,24 @@ Simple slide creation logic for
 
 [![NPM](https://nodei.co/npm/shaz.png)](https://nodei.co/npm/shaz/)
 
-[![experimental](https://img.shields.io/badge/stability-experimental-red.svg)](https://github.com/dominictarr/stability#experimental) 
+[![experimental](https://img.shields.io/badge/stability-experimental-red.svg)](https://github.com/dominictarr/stability#experimental) [![bitHound Score](https://www.bithound.io/github/DamonOehlman/shaz/badges/score.svg)](https://www.bithound.io/github/DamonOehlman/shaz) 
 
 ## Example Usage
 
 __NOT CURRENTLY DESIGNED FOR HUMAN CONSUMPTION__
 
+## Reference
+
+### `img(url, opts?) => Slide`
+
+Create a slide that contains a single image which is displayed using
+a `backround-image` CSS style.
+
 ## License(s)
 
 ### MIT
 
-Copyright (c) 2014 Damon Oehlman <damon.oehlman@gmail.com>
+Copyright (c) 2015 Damon Oehlman <damon.oehlman@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
