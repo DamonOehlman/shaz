@@ -109,9 +109,16 @@ proto.setBackground = function(value, bgImage) {
   }
 
   this.el.style.background = value;
+  return this;
 };
 
+
 proto.setBackgroundImage = function(value) {
+  console.warn('setBackgroundImage function of a slide has been deprecated, please use img() instead');
+  return this.img(value);
+};
+
+proto.img = function(value) {
   var img = new Image();
   var el = this.el;
 
@@ -120,6 +127,7 @@ proto.setBackgroundImage = function(value) {
   };
 
   img.src = value;
+  return this;
 }
 
 imageAttributes.forEach(require('./lib/image-background')(proto));
