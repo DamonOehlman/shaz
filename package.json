@@ -1,6 +1,6 @@
 {
   "name": "shaz",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Slide creation logic for shazam",
   "main": "index.js",
   "scripts": {
