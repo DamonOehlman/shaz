@@ -25,5 +25,5 @@ require('./tags').forEach(function(tagName) {
 
 // special tags :)
 slide.img = require('./img');
-slide.markdown = exports.md = require('./markdown');
+slide.markdown = slide.md = require('./markdown');
 slide.site = require('./site');
