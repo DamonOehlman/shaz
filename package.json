@@ -25,10 +25,10 @@
   "homepage": "https://github.com/DamonOehlman/shaz",
   "dependencies": {
     "cog": "^1.0.0",
-    "crel": "^1.1.2",
-    "eventemitter3": "^0.1.5",
+    "crel": "^3.0.0",
+    "eventemitter3": "^2.0.2",
     "inherits": "^2.0.1",
-    "marked-ast": "^0.1.0",
+    "marked-ast": "^0.3.0",
     "marked-ast-crel": "^1.3.0"
   }
 }
