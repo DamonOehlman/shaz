@@ -89,6 +89,8 @@ proto.applyStyleOverrides = function(opts) {
 proto.eg = proto.example = appender(require('./lib/example'));
 proto.html = appender(require('./lib/html'));
 proto.url = appender(require('./lib/url'));
+proto.ul = appender(require('./lib/list')('ul'));
+proto.ol = appender(require('./lib/list')('ol'));
 proto.markdown = proto.md = appender(require('./lib/markdown'));
 require('./lib/styler')(proto);
 
