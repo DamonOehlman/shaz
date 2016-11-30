@@ -1,6 +1,6 @@
 var marked = require('marked-ast');
 var Slide = require('./slide');
-var reSlideBreak = /\n\r?\-{2,}/m;
+var reSlideBreak = /\n\r?\:{3,}/m;
 var reLeadingAndTrailingSpaces = /^\s*(.*)\s*$/m;
 
 var markdown = module.exports = function(md, opts) {
