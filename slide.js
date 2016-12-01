@@ -137,6 +137,16 @@ proto.addClass = function(value) {
   return this;
 };
 
+proto.data = function(key, value) {
+  if (key === undefined) {
+    delete this.el.dataset[key];
+  } else {
+    this.el.dataset[key] = value;
+  }
+
+  return this;
+};
+
 imageAttributes.forEach(require('./lib/image-background')(proto));
 
 require('./tags').forEach(function(tag) {
