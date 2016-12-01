@@ -132,6 +132,11 @@ proto.img = function(value) {
   return this;
 }
 
+proto.addClass = function(value) {
+  this.el.classList.add(value);
+  return this;
+};
+
 imageAttributes.forEach(require('./lib/image-background')(proto));
 
 require('./tags').forEach(function(tag) {
