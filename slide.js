@@ -92,6 +92,7 @@ proto.url = appender(require('./lib/url'));
 proto.ul = appender(require('./lib/list')('ul'));
 proto.ol = appender(require('./lib/list')('ol'));
 proto.markdown = proto.md = appender(require('./lib/markdown'));
+proto.crel = appender(require('./lib/crel'));
 require('./lib/styler')(proto);
 
 backgroundSizes.forEach(function(size) {
